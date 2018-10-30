@@ -32,11 +32,6 @@ function ownSort(arr) {
   return arr
 }
 
-// function binarySearch(search, arr){
-
-// }
-
-
 function binary_search (search, array) {
   var idxTerkecil = 0
   var idxTerbesar = array.length-1
