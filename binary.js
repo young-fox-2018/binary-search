@@ -25,24 +25,30 @@ function ownSort(arr) {
 
 function binarySearch (search, array) {
   // Your searching code
-  var index;
+  var startInd = 0;
+  var midInd = Math.floor(array.length/2);
+  var endInd = array.length-1;
 
-  for ( var i = 0 ; i < array.length; i++){
-    if(search === array[i]){
-      index = i
+  while(array[midInd] !== search && startInd < endInd){
+    if (search < array[midInd]){
+      endInd = midInd-1;
+      midInd = Math.floor((startInd+endInd)/2)
+    }else if (search > array[midInd]){
+      startInd = midInd + 1;
+      midInd = Math.floor((startInd+endInd)/2)
     }
   }
-  if(index == undefined){
-    index = -1
+  if(search !== array[midInd]){
+    midInd = -1
   }
-  return index
+  return midInd
 
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
 
-// Driver code
+// // Driver code
 console.log(binarySearch(8, arrayGenapSorted))
 console.log(binarySearch(10, arrayGenapSorted))
 console.log(binarySearch(33, arrayGenapSorted))
