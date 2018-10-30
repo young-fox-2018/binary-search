@@ -21,25 +21,26 @@ function binary_search (search, array) {
   let isFound = false
   let midPoint= Math.floor(array.length/2)
   let refMid =  Math.floor(array.length/2)
-  // console.log(array)
+  let count = 0
   while(isFound===false){
-    if(refMid<midPoint && refMid<0.00000000001){
+    if(midPoint < 1 && array[0] !==search ||
+       midPoint > array.length-2          &&
+       array[array.length-1] !==search    ||
+       count===5 && array[0] !==search
+    ){
       return -1
     }
+    count+=1
     refMid=refMid/2
     if(search===array[midPoint]){
       return midPoint
-
     }else if(search>array[midPoint]){
-      // console.log(midPoint)
       midPoint=midPoint+Math.ceil(refMid)
-      // console.log(search,array[midPoint],midPoint)
     }else{
-      // console.log(midPoint)
       midPoint=midPoint/2
     }
   }
-  return -1;
+  return '';
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
@@ -52,7 +53,7 @@ console.log(binary_search(33, arrayGenapSorted))
 
 console.log(binary_search(53, arrayGanjilSorted))
 console.log(binary_search(3, arrayGanjilSorted))
-console.log(binary_search(28, arrayGanjilSorted))
+console.log(binary_search(12, arrayGanjilSorted))
 //
 // module.exports = {
 //   binary_search
