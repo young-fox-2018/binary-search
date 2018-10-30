@@ -4,39 +4,36 @@ var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
 var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
 function ownSort(arr) {
+  var sorted = 0
   var temp
-  var idxMin
-  for(var i=0;i<arr.length;i++){
-    idxMin = undefined // refresh temp & idx
-    temp = undefined
+  var idx
+  var nilai
+  for(var i=0;i<arr.length;i++) {
+    if(i != 0){
+      var index = i
 
-    for(var j=i+1;j<arr.length;j++){
-      if(temp == undefined){
-          temp = arr[j]
-          idxMin = j
-          // first insert temp & idx
-      }else if(temp > arr[j]){
-          temp = arr[j]
-          idxMin = j
-          // insert temp & idx if less than it's before
+      for ( var j = index ; j >= 0 ; j-- ) {
+        
+        if(arr[index] < arr[index-1]){
+          temp = arr[index-1]
+          arr[index-1] = arr[index]
+          arr[index] = temp
+        }
+        
+        index--
       }
-    }
 
-    if(arr[i]>temp){
-      // swap if current number is greater than temp
-      arr[idxMin] = arr[i]
-      arr[i] = temp
     }
   }
-
+  
   return arr
+ 
 }
 
 function binary_search (search, array) {
   var idxTerkecil = 0
   var idxTerbesar = array.length-1
 
-  // console.log(array)
 
   while (idxTerkecil <= idxTerbesar) {
     var idxTengah = Math.floor((idxTerkecil + idxTerbesar) / 2)
@@ -62,6 +59,7 @@ var arrayGanjilSorted = ownSort(testArrayGanjil)
 
 // release 0
 console.log('RELEASE 0')
+
 let test_array = [1,2,3,4,5]
 console.log(binary_search(3, test_array) === 2) // true
 
@@ -84,7 +82,6 @@ console.log(binary_search(53, arrayGanjilSorted))
 console.log(binary_search(3, arrayGanjilSorted))
 console.log(binary_search(2, arrayGanjilSorted))
 
-// console.log(binary_search(32, [13,19,24,29,32,37,43]))
 
 module.exports = {
   binary_search
