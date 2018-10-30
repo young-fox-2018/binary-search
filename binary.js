@@ -1,5 +1,18 @@
 'use strict'
 
+
+/*
+=========ALGORITMA==========
+
+1. looping dari 1 sampai panjang arr var i;
+2. looping dari 0 var i dengan var j;
+3. jika arr[i] < arr[j],maka
+3.a swap arr[i] dan arr[j];
+
+
+
+*/
+
 var testArrayGenap = [40, 18, 22, 32, 90, 10, 10, 22, 8]
 var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
