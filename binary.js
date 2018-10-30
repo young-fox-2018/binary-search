@@ -5,23 +5,21 @@ var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
 function ownSort(arr) {
   // Your sorting code
+  for(var i = 1; i < arr.length; i++){
+    for(var j = 0; j < i ; j++){
 
-  for (var i = 0; i < arr.length; i++){
-        var min = 9999999999;
-        var index 
-        for(var j = i; j < arr.length; j++){
-            if(arr[j] < min){
-                min = arr[j];
-                index = j;
-            }
-        }
+      if(arr[i]<arr[j]){
         var temp = arr[i];
-        arr[i] = arr[index];
-        arr[index] = temp
-        
+        arr[i] = arr[j];
+        arr[j] = temp;
+      }
     }
-    return arr
+  }
+
+  return arr
 }
+
+
 
 function binarySearch (search, array) {
   // Your searching code
@@ -47,6 +45,7 @@ function binarySearch (search, array) {
 
 var arrayGenapSorted = ownSort(testArrayGenap)
 var arrayGanjilSorted = ownSort(testArrayGanjil)
+
 
 // // Driver code
 console.log(binarySearch(8, arrayGenapSorted))
