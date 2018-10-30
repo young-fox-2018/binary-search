@@ -5,12 +5,35 @@ var testArrayGanjil = [3, 31, 89, 53, 53, 85, 77, 21, 55]
 
 function ownSort(arr) {
   // Your sorting code
+  for(let i = 0; i < arr.length; i++){
+    var initial = arr[i]
+    var j = i - 1
+    while(j >= 0 && arr[j] > initial){
+        arr[j+1] = arr[j]
+        j -= 1
+    }
+    arr[j+1] = initial
+}
   return arr
+
 }
 
-function binarySearch (search, array) {
+function binary_search (search, array) {
   // Your searching code
-  return 0;
+  var awal = 0
+  var akhir = array.length-1
+  var tengah = Math.round((awal + akhir)/2)
+  while(akhir >= awal){
+      if(array[tengah] === search){
+          return tengah
+      }else if(search < array[tengah]){
+          akhir = tengah - 1
+      }else{
+          awal = tengah + 1
+      }
+      tengah = Math.floor((awal + akhir)/2)
+  }
+  return -1
 }
 
 var arrayGenapSorted = ownSort(testArrayGenap)
